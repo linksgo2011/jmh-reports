@@ -40,45 +40,32 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Threads;
 import org.openjdk.jmh.annotations.Warmup;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.Throughput)
-@Warmup(iterations = 3,time = 3)
+@Warmup(iterations = 3, time = 3)
 @Measurement(iterations = 5, time = 5)
 @Threads(8)
 @Fork(1)
 @OutputTimeUnit(TimeUnit.SECONDS)
-public class StringBenchmark {
+public class CollectionBenchmark {
 
     @Benchmark
-    public void constructStringByAssignment() {
-        String s = "Hello world!";
-        for (int i = 0; i < 10; i++) {
-            s += s;
+    public void giveCertainInitialCapacityForCollection() {
+        List<Integer> list = new ArrayList<>(100);
+        for (int i = 0; i < 100; i++) {
+            list.add(i);
         }
     }
 
     @Benchmark
-    public void constructStringByConstructor() {
-        String s = new String("Hello world!");
-        for (int i = 0; i < 10; i++) {
-            s += s;
-        }
-    }
-
-    @Benchmark
-    public void constructStringByStringBuilder() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
-            sb.append(i);
-        }
-    }
-
-    @Benchmark
-    public void constructStringByStringBuffer() {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < 10; i++) {
-            sb.append(i);
+    public void noCertainInitialCapacityForCollection() {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            list.add(i);
         }
     }
 }

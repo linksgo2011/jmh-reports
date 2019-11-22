@@ -40,45 +40,31 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Threads;
 import org.openjdk.jmh.annotations.Warmup;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.Throughput)
-@Warmup(iterations = 3,time = 3)
+@Warmup(iterations = 3, time = 3)
 @Measurement(iterations = 5, time = 5)
 @Threads(8)
 @Fork(1)
 @OutputTimeUnit(TimeUnit.SECONDS)
-public class StringBenchmark {
+public class CacheValueBenchmark {
 
     @Benchmark
-    public void constructStringByAssignment() {
-        String s = "Hello world!";
-        for (int i = 0; i < 10; i++) {
-            s += s;
+    public void getListSizeInLoopEveryTime() {
+        List<String> list = Arrays.asList("1", "2");
+        for (int i = 0; i < list.size(); i++) {
+
         }
     }
 
     @Benchmark
-    public void constructStringByConstructor() {
-        String s = new String("Hello world!");
-        for (int i = 0; i < 10; i++) {
-            s += s;
-        }
-    }
+    public void getListSizeInLoopOnlyOnce() {
+        List<String> list = Arrays.asList("1", "2");
+        for (int i = 0, length = list.size(); i < list.size(); i++) {
 
-    @Benchmark
-    public void constructStringByStringBuilder() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
-            sb.append(i);
-        }
-    }
-
-    @Benchmark
-    public void constructStringByStringBuffer() {
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < 10; i++) {
-            sb.append(i);
         }
     }
 }
