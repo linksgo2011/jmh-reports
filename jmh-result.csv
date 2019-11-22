@@ -1,0 +1,5 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
+"org.sample.AutoBoxBenchmark.boxDataType","thrpt",8,5,317290.076332,77106.558025,"ops/ms"
+"org.sample.AutoBoxBenchmark.primaryDataType","thrpt",8,5,8753696.280639,1998579.193889,"ops/ms"
+"org.sample.StringBenchmark.testSimpleString","thrpt",8,5,233.347635,6.636729,"ops/ms"
+"org.sample.StringBenchmark.testStringBuilder","thrpt",8,5,85397.364908,12070.678639,"ops/ms"
