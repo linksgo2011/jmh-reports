@@ -53,7 +53,3 @@ TimeUnit, we are using SECONDS, jmh also supports nano/micro/milli/macro.
 
 | Test |  Mode | OPS  |  Unit |
 |---|---|---|---|
-|"cn.printf.jmhreports.AutoBoxBenchmark.boxDataType"|"thrpt"|364210498.563222| sops/s |
-|"cn.printf.jmhreports.AutoBoxBenchmark.primaryDataType"|"thrpt"|9623525294.046886| sops/s |
-|"cn.printf.jmhreports.StringBenchmark.testSimpleString"|"thrpt"|218839.386824| sops/s |
-|"cn.printf.jmhreports.StringBenchmark.testStringBuilder"|"thrpt"|86635925.994050| sops/s |
